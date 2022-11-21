@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    margin-bottom: 50px;
 }
 
 .filters-col {
@@ -57,4 +58,120 @@
 .select.active .select-list {
     opacity: 1;
     height: 100%;
+}
+
+.gift-container {
+    position: relative;
+}
+
+.gift-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 40px;
+    margin-bottom: 80px;
+    transition: 0.6s;
+    max-height: 1000px;
+}
+
+.gift-container.preload .gift-list {
+    max-height: 250px;
+    opacity: 0;
+}
+
+.gift {
+    width: calc(50% - 15px);
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(206, 206, 206, 0.25);
+    border-radius: 50px;
+    background-image: url('../imgs/gift-bg.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 250px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.gift-img {
+    position: absolute;
+    left: 90px;
+    top: 80px;
+    width: auto;
+    height: auto;
+}
+
+.gift-info {
+    max-width: 330px;
+}
+
+.gift-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #145C8E;
+    margin-bottom: 10px;
+}
+
+.gift-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 146.9%;
+    margin-bottom: 20px;
+}
+
+.gift-ordered {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #961B1F;
+}
+
+.gift-pagination {
+    display: flex;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #145C8E;
+    transition: 0.6s;
+}
+
+.gift-container.preload .gift-pagination {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gift-pagination a {
+    border-bottom: 1px solid transparent;
+}
+
+.gift-pagination  a:hover {
+    border-bottom: 1px solid #145C8E;
+}
+
+.gift-preloader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(206, 206, 206, 0.25);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.6s;
+}
+
+.gift-container.preload .gift-preloader {
+    opacity: 1;
+    pointer-events: all;
 }

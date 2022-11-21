@@ -67,30 +67,46 @@ let is_sending = false;
 function submit(form) {
     if (!is_sending) {
         is_sending = true;
+        openPreloader();
 
-        let data = new FormData(form);
-        data.append('action', 'catalog_filter');
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', myajax.url);
-        xhr.send(data);
+        setTimeout(() => {
+            let data = new FormData(form);
+            data.append('action', 'catalog_filter');
     
-        xhr.onload = function() {
-            if (xhr.status != 200) {
-                console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-            } else {
-                console.log(JSON.parse(xhr.response));
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', myajax.url);
+            xhr.send(data);
+        
+            xhr.onload = function() {
+                if (xhr.status != 200) {
+                    console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+                } else {
+                    console.log(JSON.parse(xhr.response));
+                }
+                is_sending = false;
+                closePreloader();
             }
-            is_sending = false;
-        }
-    
-        xhr.onerror = function() {
-            console.error("Запрос не удался");
-            is_sending = false;
-        }
+        
+            xhr.onerror = function() {
+                console.error("Запрос не удался");
+                is_sending = false;
+                closePreloader();
+            }
+        }, 600);
+        
     } else {
         console.log('Запрос еще отправляется...');
     }
+}
+
+function openPreloader() {
+    const container  = document.querySelector('.gift-container');
+    container.classList.add('preload');
+}
+
+function closePreloader() {
+    const container  = document.querySelector('.gift-container');
+    container.classList.remove('preload');
 }
 
 window.addEventListener('DOMContentLoaded', () => {

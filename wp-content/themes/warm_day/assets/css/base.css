@@ -58,8 +58,16 @@ h1, h2 {
     text-align: center;
     letter-spacing: 0.02em;
     color: #145C8E;
-    margin-bottom: 50px;
+    margin: 0 0 50px;
     text-align: center;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 37px;
+    color: #43719E;
+    margin: 0 0 30px;
 }
 
 label {
@@ -145,7 +153,8 @@ button:not(:disabled):hover {
 }
 
 button:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* HEADER */
@@ -166,6 +175,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 9999;
 }
 
 .site-branding {
@@ -202,3 +212,202 @@ header {
     border-bottom: 1px solid #145C8E;
 }
 
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #145C8E;
+    border-color: #145C8E transparent #145C8E transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+#contacts {
+    background-color: #F5F9FF;
+}
+
+#contacts h2 {
+    text-align: left;
+}
+
+.contacts-container {
+    display: flex;
+    gap: 70px;
+}
+
+form.request {
+    border: 0.5px solid #4A4A4A;
+    border-radius: 60px;
+    padding: 40px 50px;
+    max-width: 480px;
+    min-width: 480px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+form.request label {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #43719E;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+form.request input[type=text],
+form.request input[type=tel],
+form.request input[type=email] {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    background: #FFFFFF;
+    border: 0.5px solid #145C8E;
+    border-radius: 60px;
+    padding: 24px 36px;
+    margin-top: 12px;
+    outline: none;
+}
+
+form.request button {
+    color: #FFFFFF;
+    background: linear-gradient(93deg, rgba(20,92,142,1) 0%, rgba(6,126,209,1) 25%, rgba(20,92,142,1) 100%);
+    background-size: 400%;
+    background-position: left center;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 24px 36px;
+    border-radius: 60px;
+    max-width: 100%;
+    margin-top: 15px;
+}
+
+form.request button svg {
+    margin-left: 10px;
+    transition: 0.6s;
+}
+
+form.request button:hover svg {
+    margin-left: 20px;
+}
+
+form.request input[type=checkbox] + label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4A4A4A;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-left: 24px;
+}
+
+form.request input[type=checkbox] + label::after,
+form.request input[type=checkbox] + label::before {
+    border-radius: 50%;
+    top: auto;
+}
+
+form.request input[type=checkbox] + label::before {
+    padding-bottom: 0px;
+    padding-left: 1px;
+}
+
+form.request .form_preloader,
+form.request .form_answer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #F5F9FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.6s;
+    padding: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #43719E;
+}
+
+form.request.preload .form_preloader {
+    opacity: 1;
+    pointer-events: all;
+}
+
+form.request.answer .form_answer {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.acceptance-points-conteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.point {
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.point-img {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.point-img img {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+.acceptance-points-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.questions {
+    color: #145C8E;
+    border-bottom: 1px solid #145C8E;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 20px;
+}
