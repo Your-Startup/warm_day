@@ -1,0 +1,60 @@
+.filters {
+    padding: 20px 40px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(206, 206, 206, 0.25);
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.filters-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-header {
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.select-arrow {
+    margin-right: 15px;
+    transition: 0.6s;
+}
+
+.select-arrow path {
+    transition: 0.6s;
+}
+
+.select-list {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90px;
+    max-width: 230px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    height: 0;
+    transition: 0.6s;
+}
+
+.select.active .select-arrow {
+    transform: rotateX(180deg);
+}
+
+.select.active .select-arrow path  {
+    stroke: #145C8E;
+}
+
+.select.active .select-list {
+    opacity: 1;
+    height: 100%;
+}

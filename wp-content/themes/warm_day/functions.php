@@ -138,16 +138,52 @@ add_action( 'widgets_init', 'warm_day_widgets_init' );
  * Enqueue scripts and styles.
  */
 function warm_day_scripts() {
+
 	wp_enqueue_style( 'warm_day-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'warm_day-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'warm_day-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_style( 'warm_day-base-style', get_template_directory_uri() . '/assets/css/base.css', array(), _S_VERSION );
+	wp_style_add_data( 'warm_day-base-style', 'rtl', 'replace' );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('warm_day-script-base', get_template_directory_uri() . '/assets/js/base.js', array(), _S_VERSION);
+
+	global $post;
+	$pagename = $post->post_name;
+
+	if (is_single() || is_tax()) {
+		$pagename = $post->post_type;
+	}
+	
+	if (file_exists(get_template_directory() . '/assets/css/' . $pagename . '.css')) {
+		wp_enqueue_style( 'warm_day-style-' . $pagename, get_template_directory_uri() . '/assets/css/' . $pagename . '.css', array(), _S_VERSION );
+		wp_style_add_data( 'warm_day-style-' . $pagename, 'rtl', 'replace' );
+	}
+
+	if (file_exists(get_template_directory() . '/assets/js/' . $pagename . '.js')) {
+		wp_enqueue_script('warm_day-script-' . $pagename, get_template_directory_uri() . '/assets/js/' . $pagename . '.js', array(), _S_VERSION);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'warm_day_scripts' );
+
+function add_type_attribute($tag, $handle, $src) {
+    global $post;
+	if (!$post) {
+		return $tag;
+	}
+	$pagename = $post->post_name;
+
+	if (is_single() || is_tax()) {
+		$pagename = $post->post_type;
+	}
+
+    if ( 'warm_day-script-' . $pagename !== $handle ) {
+        return $tag;
+    }
+    // change the script tag by adding type="module" and return it.
+    $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    return $tag;
+}
+add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
 
 /**
  * Implement the Custom Header feature.
@@ -168,6 +204,16 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+* Custom posts.
+*/
+require get_template_directory() . '/inc/custom-posts.php';
+
+/**
+* Ajax.
+*/
+require get_template_directory() . '/inc/ajax.php';
 
 /**
  * Load Jetpack compatibility file.
