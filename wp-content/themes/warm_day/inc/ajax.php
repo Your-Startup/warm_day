@@ -47,7 +47,7 @@ function feedback()
 
 	$result = [
 		'success' => true,
-		'message' => 'Спасибо, ' . $data['name'] . '! Ваша заявка отправленна, мы свяжемся с Вами в ближайшее время.'
+		'message' => 'Спасибо, ' . $data['name'] . '!<br>Ваша заявка отправленна, мы свяжемся с Вами в ближайшее время.'
 	];
 
     echo json_encode($result);
