@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Контакты и обратная связь</h2>
         <div class="contacts-container">
-            <form id="feedback" class="request">
+            <form id="feedback" class="request js-request">
                 <input type="hidden" name="action" value="feedback">
                 <h3>Форма обратной связи</h3>
                 <label for="">

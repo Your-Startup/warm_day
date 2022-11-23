@@ -5,7 +5,7 @@
     </div>
     <div class="main-content">
         <h1>Самая теплая акция на Ямале</h1>
-        <button class="big-btn blue-btn">
+        <button class="big-btn blue-btn js-popup-open">
             Подарить подарок
         </button>
     </div>
@@ -105,8 +105,9 @@
                 Завершение акции.
             </div>
         </div>
-        <button class="big-btn blue-btn">
+        <button class="big-btn blue-btn js-popup-open">
             Стать дарителем
         </button>
     </div>
 </section>
+<canvas id="snow"></canvas>

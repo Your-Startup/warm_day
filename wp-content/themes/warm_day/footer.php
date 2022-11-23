@@ -15,7 +15,7 @@
 </div><!-- #page -->
 
 <?php include_once get_template_directory() . '/template-parts/components/popups.php' ?>
-
+<?php include_once get_template_directory() . '/template-parts/components/snow.php' ?>
 <?php wp_footer(); ?>
 
 </body>

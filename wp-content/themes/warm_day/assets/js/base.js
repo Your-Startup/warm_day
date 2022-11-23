@@ -1,5 +1,5 @@
 function formsInit() {
-    const forms = document.querySelectorAll('form.request');
+    const forms = document.querySelectorAll('form.js-request');
 
     let is_sending = [];
     for (let i = 0; i < forms.length; i++) {
@@ -48,6 +48,26 @@ function formsInit() {
     });
 }
 
+function popupInit() {
+    const popup = document.querySelector('.popup'),
+          close = popup.querySelector('.popup-close'),
+          opens = document.querySelectorAll('.js-popup-open');
+
+    opens.forEach((open) => {
+        open.addEventListener('click', () => {
+            popup.classList.add('open');
+            if (open.dataset.id) {
+                popup.querySelector('input[name=id]').value = open.dataset.id;
+            }
+        });
+    });
+
+    close.addEventListener('click', () => {
+        popup.classList.remove('open');
+    });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     formsInit();
+    popupInit();
 });

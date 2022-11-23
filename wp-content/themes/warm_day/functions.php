@@ -162,6 +162,9 @@ function warm_day_scripts() {
 	if (file_exists(get_template_directory() . '/assets/js/' . $pagename . '.js')) {
 		wp_enqueue_script('warm_day-script-' . $pagename, get_template_directory_uri() . '/assets/js/' . $pagename . '.js', array(), _S_VERSION);
 	}
+
+	wp_enqueue_style( 'warm_day-show-style', get_template_directory_uri() . '/assets/css/components/snow.css', array(), _S_VERSION );
+	wp_style_add_data( 'warm_day-show-style', 'rtl', 'replace' );
 }
 add_action( 'wp_enqueue_scripts', 'warm_day_scripts' );
 
