@@ -48,23 +48,49 @@ function formsInit() {
     });
 }
 
+let popup, contents, closeBtn, opens;
+
 function popupInit() {
-    const popup = document.querySelector('.popup'),
-          close = popup.querySelector('.popup-close'),
-          opens = document.querySelectorAll('.js-popup-open');
+    popup    = document.querySelector('.popup');
+    contents = popup.querySelectorAll('.popup-content');
+    closeBtn = popup.querySelector('.popup-close');
+    opens    = document.querySelectorAll('.js-popup-open');
 
     opens.forEach((open) => {
         open.addEventListener('click', () => {
-            popup.classList.add('open');
-            if (open.dataset.id) {
-                popup.querySelector('input[name=id]').value = open.dataset.id;
+            if (!open.dataset.popup) {
+                return;
             }
+            openPopup(open.dataset.popup);
         });
     });
 
-    close.addEventListener('click', () => {
+    closeBtn.addEventListener('click', () => {
         popup.classList.remove('open');
     });
+}
+
+function openPopup(id) {
+    if (!id) {
+        return;
+    }
+
+    const current_popup = popup.querySelector('#' + id);
+
+    if (!current_popup) {
+        return;
+    }
+
+    contents.forEach((content) => {
+        content.classList.remove('active');
+    });
+
+    current_popup.classList.add('active');
+
+    popup.classList.add('open');
+    if (open.dataset.id) {
+        popup.querySelector('input[name=id]').value = open.dataset.id;
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {

@@ -10,9 +10,20 @@ body.admin-bar #main {
     justify-content: space-between;
     flex-direction: column;
     padding: 50px 100px 33px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../imgs/main-bg.jpeg');
     background-position: top center;
     background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#main::before {
+    content: '';
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .main-top {
@@ -69,8 +80,12 @@ body.admin-bar #main {
     border-bottom: 1px solid #FFFFFF;
 }
 
-.social {
+#main .socials {
     color: #FFFFFF;
+}
+
+#main .socials img {
+    background-color: #FFFFFF;
 }
 
 .about-row {

@@ -49,7 +49,7 @@ function register_post_types() {
 			'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
 			'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
 			'parent_item_colon'  => '', // для родителей (у древовидных типов)
-			'menu_name'          => 'Заявки', // название меню
+			'menu_name'          => 'Обратная связь', // название меню
 		],
 		'description'         => '',
 		'public'              => true,
@@ -76,7 +76,7 @@ function register_post_types() {
 			'add_new'            => 'Создать подарок', // для добавления новой записи
 			'add_new_item'       => 'Создание подарка', // заголовка у вновь создаваемой записи в админ-панели.
 			'edit_item'          => 'Редактирование подарка', // для редактирования типа записи
-			'new_item'           => 'Услуга', // текст новой записи
+			'new_item'           => 'Подарок', // текст новой записи
 			'view_item'          => 'Смотреть подарок', // для просмотра записи этого типа.
 			'search_items'       => 'Искать подарок', // для поиска по этим типам записи
 			'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
@@ -92,10 +92,53 @@ function register_post_types() {
 		'menu_position'       => 28,
 		'menu_icon'           => 'dashicons-star-filled',
 		'hierarchical'        => false,
-		'supports'            => ['custom-fields' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'supports'            => ['title', 'custom-fields' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => ['gift-categories'],
 		'has_archive'         => false,
 		'rewrite'             => true,
 		'query_var'           => true,
 	] );
+
+	// Муниципальные образования
+	register_post_type( 'city', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Муниципальные образования', // основное название для типа записи
+			'singular_name'      => 'Муниципальное образование', // название для одной записи этого типа
+			'add_new'            => 'Создать муниципальное образование', // для добавления новой записи
+			'add_new_item'       => 'Создание муниципального образования', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактирование муниципального образования', // для редактирования типа записи
+			'new_item'           => 'Муниципальное образование', // текст новой записи
+			'view_item'          => 'Смотреть муниципальное образование', // для просмотра записи этого типа.
+			'search_items'       => 'Искать муниципальное образование', // для поиска по этим типам записи
+			'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Муниципальные образования', // название меню
+		],
+		'description'         => '',
+		'public'              => true,
+		'show_in_menu'        => true, // показывать ли в меню адмнки
+		'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+		'rest_base'           => null, // $post_type. C WP 4.7
+		'menu_position'       => 29,
+		'menu_icon'           => 'dashicons-location-alt',
+		'hierarchical'        => false,
+		'supports'            => ['title', 'thumbnail', 'custom-fields'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+	] );
+}
+
+// Страница доп. настроек
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title'    => 'Дополнительные настройки',
+        'menu_title'    => 'Доп. настройки',
+        'menu_slug'     => 'additional-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
 }

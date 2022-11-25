@@ -219,9 +219,80 @@ require get_template_directory() . '/inc/custom-posts.php';
 require get_template_directory() . '/inc/ajax.php';
 
 /**
+* Helper.
+*/
+require get_template_directory() . '/inc/helper.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+if( is_admin() ){
+	// отключим проверку обновлений при любом заходе в админку...
+	remove_action( 'admin_init', '_maybe_update_core' );
+	remove_action( 'admin_init', '_maybe_update_plugins' );
+	remove_action( 'admin_init', '_maybe_update_themes' );
+
+	// отключим проверку обновлений при заходе на специальную страницу в админке...
+	remove_action( 'load-plugins.php', 'wp_update_plugins' );
+	remove_action( 'load-themes.php', 'wp_update_themes' );
+
+	// оставим принудительную проверку при заходе на страницу обновлений...
+	//remove_action( 'load-update-core.php', 'wp_update_plugins' );
+	//remove_action( 'load-update-core.php', 'wp_update_themes' );
+
+	// внутренняя страница админки "Update/Install Plugin" или "Update/Install Theme" - оставим не мешает...
+	//remove_action( 'load-update.php', 'wp_update_plugins' );
+	//remove_action( 'load-update.php', 'wp_update_themes' );
+
+	// событие крона не трогаем, через него будет проверяться наличие обновлений - тут все отлично!
+	//remove_action( 'wp_version_check', 'wp_version_check' );
+	//remove_action( 'wp_update_plugins', 'wp_update_plugins' );
+	//remove_action( 'wp_update_themes', 'wp_update_themes' );
+
+	/**
+	 * отключим проверку необходимости обновить браузер в консоли - мы всегда юзаем топовые браузеры!
+	 * эта проверка происходит раз в неделю...
+	 * @see https://wp-kama.ru/function/wp_check_browser_version
+	 */
+	add_filter( 'pre_site_transient_browser_'. md5( $_SERVER['HTTP_USER_AGENT'] ), '__return_empty_array' );
+}
+
+// Общий счётчик обновлений в админ-баре
+add_action( 'admin_bar_menu', function ( $wp_adminbar ) {
+	$wp_adminbar->remove_node( 'updates' );
+}, 999 );
+
+add_action( 'admin_menu', function () {
+
+	// "Доступен WordPress X.X" в Консоле - Для Single установки
+	remove_action( 'admin_notices', 'update_nag', 3 );
+
+	// "Доступен WordPress X.X" в Консоле - Для Multisite установки
+	remove_action( 'network_admin_notices', 'update_nag', 3 );
+
+	// "Скачать версию X.X" в футере
+	remove_action( 'update_footer', 'core_update_footer' );
+
+	// Общий счётчик обновлений в админ-меню
+	remove_submenu_page( 'index.php', 'update-core.php' );
+
+	// Счётчик плагинов для обновления в админ-меню
+	$GLOBALS['menu'][65][0] = __( 'Plugins' );
+
+}, 999 );
+
+// "Обновление до X.X" в виджете "На виду" в Консоле
+add_action( 'admin_head-index.php', function () {
+	?>
+	<style>
+		#wp-version-message .button {
+			display: none;
+		}
+	</style>
+	<?php
+} );

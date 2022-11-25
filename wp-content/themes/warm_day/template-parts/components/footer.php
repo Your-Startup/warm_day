@@ -1,3 +1,5 @@
+<?php global $allCities; ?>
+
 <section id="contacts">
     <div class="container">
         <h2>Контакты и обратная связь</h2>
@@ -35,24 +37,41 @@
             <div class="acceptance-points-conteiner">
                 <div class="acceptance-points">
                     <h3>Пункты приема подарков</h3>
-                    <div class="point">
-                        <div class="point-img">
-                            <img src="<?= get_template_directory_uri() . '/assets/imgs/city.png'?>" alt="">
-                        </div>
-                        Салехард - МРК «Полярис», (ул. Чубынина, д.17)
-                    </div>
+                    <?php if ($allCities) : ?>
+                        <?php foreach ($allCities as $city) : ?>
+                            <?php if (!empty($city['point'])) : ?>
+                                <div class="point">
+                                    <div class="point-img">
+                                        <img src="<?= $city['img'] ?>" alt="">
+                                    </div>
+                                    <div class="point-text">
+                                        <span><?= $city['point']['city'] ?></span> – <?= $city['point']['address'] ?>
+                                    </div>                                 
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="acceptance-points-footer">
-                    <a href="#" class="questions">Есть вопрос или предложение?</a>
-                    <div class="socials">
-                        Мы в соц. сетях:
-                        <a href="">
-                            <img src="" alt="">
+                    <?php $question_link = get_field('question_link', 'options');?>
+                    <?php if ($question_link) : ?>
+                        <a href="<?= $question_link ?>" target="_blank" class="questions">
+                            Есть вопрос или предложение?
                         </a>
-                        <a href="">
-                            <img src="" alt="">
-                        </a>
-                    </div>
+                    <?php else: ?> 
+                        <div></div>
+                    <?php endif; ?>  
+                    <?php $socials = get_field('socials', 'options');?> 
+                    <?php if ($socials) : ?>
+                        <div class="socials">
+                            Мы в соц. сетях:
+                            <?php foreach ($socials as $social) : ?>
+                                <a href="<?= $social['link'] ?>" target="_blank">
+                                    <img src="<?= $social['icon'] ?>" alt="">
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

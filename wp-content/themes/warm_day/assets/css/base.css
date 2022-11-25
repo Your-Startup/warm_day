@@ -49,6 +49,8 @@ a:hover {
 
 section {
     padding: 100px 0;
+    z-index: 10;
+    position: relative;
 }
 
 h1, h2 {
@@ -375,13 +377,20 @@ form.js-request.answer .form_answer {
 
 .point {
     display: flex;
-    font-weight: 500;
+    align-items: flex-start;
+    font-weight: 400;
     font-size: 16px;
     line-height: 20px;
+    margin-bottom: 12px;
+}
+
+.point span {
+    font-weight: 600;
 }
 
 .point-img {
     width: 30px;
+    min-width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,6 +419,23 @@ form.js-request.answer .form_answer {
     justify-content: center;
     font-size: 16px;
     line-height: 20px;
+}
+
+.socials a {
+    display: block;
+    width: max-content;
+    height: max-content;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.socials a:first-child {
+    margin-left: 20px;
+}
+
+.socials a img {
+    border-radius: 50%;
 }
 
 .popup {
@@ -456,6 +482,14 @@ form.js-request.answer .form_answer {
     top: 25px;
     cursor: pointer;
     z-index: 99999;
+}
+
+.popup-content {
+    display: none;
+}
+
+.popup-content.active {
+    display: block;
 }
 
 .popup-content h3 {

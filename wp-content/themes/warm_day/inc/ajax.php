@@ -25,7 +25,7 @@ function feedback()
 	$data = $_POST;
 
 	$feedback_id = wp_insert_post(array(
-		'post_title'  => sanitize_text_field( 'Запрос на обратную связь' . date('d.m.Y H:i:s') ),
+		'post_title'  => sanitize_text_field( 'Запрос на обратную связь ' . date('d.m.Y H:i:s') ),
 		'post_status' => 'pending',
 		'post_type'   => 'request'
 	));

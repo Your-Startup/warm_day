@@ -1,3 +1,9 @@
+<?php 
+global $current_city; 
+
+$gifts = getGifts($current_city->ID);
+?>
+
 <section id="catalog">
     <div class="container">
         <h1>Каталог подарков</h1>
@@ -51,91 +57,8 @@
                 </button>
             </div>
         </form>
-        <div class="gift-container">
-            <div class="gift-list">
-
-                <div class="gift">
-                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/man.png'?>" alt="">
-                    <div class="gift-info">
-                        <div class="gift-title">
-                            Паша, 8 лет<br>
-                            город
-                        </div>
-                        <div class="gift-text">
-                            Благотворительная акция «Тёплый день» проводится в каждом муниципальном образовании ЯНАО с 2014 года по инициативе Молодёжного правительства Ямало-Ненецкого автономного округа.
-                        </div>
-                        <div class="gift-ordered">
-                            Подарок забронировал<br>
-                            Алексей Игоревич о.
-                        </div>
-                    </div>
-                </div>
-                <div class="gift">
-                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/man.png'?>" alt="">
-                    <div class="gift-info">
-                        <div class="gift-title">
-                            Паша, 8 лет<br>
-                            город
-                        </div>
-                        <div class="gift-text">
-                            Благотворительная акция «Тёплый день» проводится в каждом муниципальном образовании ЯНАО с 2014 года по инициативе Молодёжного правительства Ямало-Ненецкого автономного округа.
-                        </div>
-                        <div class="gift-ordered">
-                            Подарок забронировал<br>
-                            Алексей Игоревич о.
-                        </div>
-                    </div>
-                </div>
-                <div class="gift">
-                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/man.png'?>" alt="">
-                    <div class="gift-info">
-                        <div class="gift-title">
-                            Паша, 8 лет<br>
-                            город
-                        </div>
-                        <div class="gift-text">
-                            Благотворительная акция «Тёплый день» проводится в каждом муниципальном образовании ЯНАО с 2014 года по инициативе Молодёжного правительства Ямало-Ненецкого автономного округа.
-                        </div>
-                        <div class="gift-ordered">
-                            Подарок забронировал<br>
-                            Алексей Игоревич о.
-                        </div>
-                    </div>
-                </div>
-                <div class="gift">
-                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/man.png'?>" alt="">
-                    <div class="gift-info">
-                        <div class="gift-title">
-                            Паша, 8 лет<br>
-                            город
-                        </div>
-                        <div class="gift-text">
-                            Благотворительная акция «Тёплый день» проводится в каждом муниципальном образовании ЯНАО с 2014 года по инициативе Молодёжного правительства Ямало-Ненецкого автономного округа.
-                        </div>
-                        <button class="js-popup-open" data-id="43">
-                            Забронировать подарок
-                        </button>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="gift-pagination">
-                    1
-                <a href="#">
-                    2
-                </a>
-                <a href="#">
-                    3
-                </a>
-                <a href="#">
-                    следующая
-                </a>
-            </div>
-            <div class="gift-preloader">
-                <div class="lds-dual-ring"></div>
-            </div>
+        <div class="gift-container<?= !$current_city ? ' preload' : '' ?>">
+            <?php include_once(get_template_directory().'/template-parts/components/gifts.php')?>
         </div>
-        
     </div>
 </section>
