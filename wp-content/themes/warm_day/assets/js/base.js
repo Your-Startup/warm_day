@@ -31,6 +31,7 @@ function formsInit() {
                         }
                         is_sending[key] = false;
                         form.classList.add('answer');
+                        form.classList.remove('preload');
                         answer.innerHTML = text;
                     }
                 
@@ -38,9 +39,9 @@ function formsInit() {
                         console.error("Запрос не удался");
                         is_sending[key] = false;
                         form.classList.add('answer');
+                        form.classList.remove('preload');
                     }
                 }, 600);
-                
             } else {
                 console.log('Запрос еще отправляется...');
             }
@@ -48,29 +49,38 @@ function formsInit() {
     });
 }
 
-let popup, contents, closeBtn, opens;
+let popup, contents, closeBtn;
 
 function popupInit() {
     popup    = document.querySelector('.popup');
     contents = popup.querySelectorAll('.popup-content');
     closeBtn = popup.querySelector('.popup-close');
-    opens    = document.querySelectorAll('.js-popup-open');
 
-    opens.forEach((open) => {
-        open.addEventListener('click', () => {
-            if (!open.dataset.popup) {
-                return;
-            }
-            openPopup(open.dataset.popup);
-        });
+    document.addEventListener('click', (e) => {
+        const open = e.target.closest('.js-popup-open');
+
+        if (!open) {
+            return;
+        }
+
+        if (!open.dataset.popup) {
+            return;
+        }
+
+        openPopup(open.dataset.popup, open);
     });
 
     closeBtn.addEventListener('click', () => {
         popup.classList.remove('open');
+        const form = popup.querySelector('form');
+        if (form) {
+            form.classList.remove('answer');
+            form.classList.remove('preload');
+        }
     });
 }
 
-function openPopup(id) {
+function openPopup(id, open) {
     if (!id) {
         return;
     }
@@ -93,7 +103,19 @@ function openPopup(id) {
     }
 }
 
+function phoneMasksInit() {
+    const phones = document.querySelectorAll('input[type="tel"]');
+
+    phones.forEach((phone) => {
+        new Cleave(phone, {
+            phone: true,
+            phoneRegionCode: 'ru'
+        });
+    });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     formsInit();
     popupInit();
+    phoneMasksInit();
 });

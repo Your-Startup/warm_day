@@ -13,7 +13,7 @@
                 </label>
                 <label for="">
                     Телефон
-                    <input type="tel" name="phone" id="feedback_phone" required>
+                    <input type="tel" name="phone" id="feedback_phone" required pattern="\+7 \d{3} \d{3} \d{2} \d{2}|8 \d{3} \d{3} \d{2} \d{2}">
                 </label>
                 <label for="">
                     Почта

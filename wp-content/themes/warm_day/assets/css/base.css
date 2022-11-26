@@ -346,7 +346,8 @@ form.js-request .form_answer {
     background-color: #F5F9FF;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     z-index: 99;
     opacity: 0;
     pointer-events: none;
@@ -358,6 +359,10 @@ form.js-request .form_answer {
     color: #43719E;
 }
 
+form.js-request .form_preloader {
+    justify-content: center;
+}
+
 form.js-request.preload .form_preloader {
     opacity: 1;
     pointer-events: all;
@@ -366,6 +371,34 @@ form.js-request.preload .form_preloader {
 form.js-request.answer .form_answer {
     opacity: 1;
     pointer-events: all;
+}
+
+.form_answer .answe_logo img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.answer_title {
+    font-size: 24px;
+    line-height: 27px;
+    color: #43719E;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.answer_text {
+    font-size: 16px;
+    line-height: 18px;
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.answer_footer {
+    min-height: 180px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .acceptance-points-conteiner {
@@ -545,6 +578,10 @@ form:not(.filters) input[type=email] {
     padding: 17px 25px;
     margin-top: 12px;
     outline: none;
+}
+
+form input[type=text]:disabled {
+    background-color: #F5F9FF !important;
 }
 
 form:not(.filters) button {

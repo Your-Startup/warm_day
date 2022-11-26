@@ -145,6 +145,9 @@ function warm_day_scripts() {
 	wp_enqueue_style( 'warm_day-base-style', get_template_directory_uri() . '/assets/css/base.css', array(), _S_VERSION );
 	wp_style_add_data( 'warm_day-base-style', 'rtl', 'replace' );
 
+	wp_enqueue_script('warm_day-script-cleave', get_template_directory_uri() . '/assets/js/libs/cleave.js', array(), _S_VERSION);
+	wp_enqueue_script('warm_day-script-phone-mask', get_template_directory_uri() . '/assets/js/libs/phone-mask.js', array(), _S_VERSION);
+
 	wp_enqueue_script('warm_day-script-base', get_template_directory_uri() . '/assets/js/base.js', array(), _S_VERSION);
 
 	global $post;
@@ -179,7 +182,7 @@ function add_type_attribute($tag, $handle, $src) {
 		$pagename = $post->post_type;
 	}
 
-    if ( 'warm_day-script-' . $pagename !== $handle ) {
+    if ( 'warm_day-script-' . $pagename !== $handle && 'warm_day-script-base' !== $handle) {
         return $tag;
     }
     // change the script tag by adding type="module" and return it.

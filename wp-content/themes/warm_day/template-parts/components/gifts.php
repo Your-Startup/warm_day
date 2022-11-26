@@ -4,7 +4,7 @@
  */
 ?>
 
-<?php if ($gifts) : ?>
+<?php if ($gifts['items']) : ?>
     <div class="gift-list">
         <?php foreach ($gifts['items'] as $gift) : ?>
             <div class="gift">
@@ -39,11 +39,8 @@
 <?php else: ?>
     <div class="gift-list">
         <div class="no-result">
-            <h3>Подарков по такому запросу не найдено.</h3>
+            <h3>Подарков по такому запросу не найдено :(</h3>
             <p>Попробуйте изменить фильтры.</p>      
         </div>
     </div>
 <?php endif; ?>
-<div class="gift-preloader">
-    <div class="lds-dual-ring"></div>
-</div>

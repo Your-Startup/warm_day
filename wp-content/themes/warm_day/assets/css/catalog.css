@@ -1,3 +1,7 @@
+#catalog {
+    padding-bottom: 50px;
+}
+
 .filters {
     padding: 20px 40px;
     background-color: #FFFFFF;
@@ -62,6 +66,7 @@
 
 .gift-container {
     position: relative;
+    padding-bottom: 50px;
 }
 
 .gift-list {
@@ -71,7 +76,7 @@
     row-gap: 40px;
     margin-bottom: 80px;
     transition: 0.6s;
-    max-height: 1000px;
+    max-height: 2000px;
 }
 
 .gift-container.preload .gift-list {
@@ -121,6 +126,7 @@
     font-size: 14px;
     line-height: 146.9%;
     margin-bottom: 20px;
+    word-break: break-word;
 }
 
 .gift-ordered {
@@ -185,4 +191,12 @@
 .gift-container.preload .gift-preloader {
     opacity: 1;
     pointer-events: all;
+}
+
+.gift-list .no-result {
+    width: 100%;
+}
+
+.gift-list .no-result * {
+    text-align: center;
 }

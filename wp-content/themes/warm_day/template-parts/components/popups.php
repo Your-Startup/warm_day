@@ -36,15 +36,16 @@ if ($post) : ?>
                     <form class="order js-request">
                         <input type="hidden" name="id" value="">
                         <input type="hidden" name="action" value="order">
+                        <input type="hidden" name="city" value="<?= $current_city->post_title ?>">
                         <h3>Чтобы забронировать подарок, заполните информацию о себе:</h3>
                         <div class="popup-scroll">
                             <label for="">
-                                Муниципальное образование*
-                                <input type="text" name="city" id="order_city" required>
+                                Муниципальное образование
+                                <input type="text" id="order_city" required value="<?= $current_city->post_title ?>" disabled>
                             </label>
                             <label for="">
                                 ФИО дарителя*
-                                <input type="text" name="name" id="order_company" required>
+                                <input type="text" name="name" id="order_name" required>
                             </label>
                             <label for="">
                                 Организация
@@ -52,7 +53,7 @@ if ($post) : ?>
                             </label>
                             <label for="">
                                 Номер телефона*
-                                <input type="text" name="phone" id="order_phone" required>
+                                <input type="tel" name="phone" id="order_phone" required pattern="\+7 \d{3} \d{3} \d{2} \d{2}|8 \d{3} \d{3} \d{2} \d{2}">
                             </label>
                             <label for="">
                                 Почта*
@@ -70,7 +71,7 @@ if ($post) : ?>
                             <div class="lds-dual-ring"></div>
                         </div>
                         <div class="form_answer">
-
+                            
                         </div>
                     </form>
                 </div>

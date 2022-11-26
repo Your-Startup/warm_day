@@ -20,7 +20,7 @@ function create_taxonomy() {
 		],
 		'description'           => '', // описание таксономии
 		'public'                => true,
-		'hierarchical'          => true,
+		'hierarchical'          => false,
 
 		'rewrite'               => true,
 		'capabilities'          => array(),

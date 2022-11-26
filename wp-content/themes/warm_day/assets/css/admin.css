@@ -1,0 +1,11 @@
+body #adminmenu, 
+body #adminmenu .wp-submenu, 
+body #adminmenuback, 
+body #adminmenuwrap {
+    width: 175px;
+}
+
+body #wpcontent, 
+body #wpfooter {
+    margin-left: 175px;
+}
