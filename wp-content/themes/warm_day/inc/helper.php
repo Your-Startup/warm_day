@@ -1,4 +1,12 @@
 <?php
+function the_custom_logo_2() {
+    $header_logo = get_theme_mod('header_logo');
+    $img = wp_get_attachment_image_src($header_logo, 'full');
+    if ($img) {
+        echo '<img src="' . $img[0] . '" alt="">';
+    }
+}
+
 $allCities = [];
 
 add_action('acf/init', 'getAllCities');
@@ -174,7 +182,7 @@ add_action('admin_enqueue_scripts', 'my_admin_style');
 // Добавляем колонки
 add_filter( 'manage_'.'gift'.'_posts_columns', 'add_gift_column', 10, 1 );
 function add_gift_column( $columns ){
-    unset($columns['title']);
+    //unset($columns['title']);
     unset($columns['date']);
 
 	$my_columns = [
@@ -272,4 +280,18 @@ function add_gift_table_filters_handler( $query ){
         }
     }
 
+}
+
+add_action( 'save_post_gift', 'set_title_gifts' ); 
+function set_title_gifts($post_id)
+{
+    remove_action( 'save_post_gift', 'set_title_gifts' );
+
+    wp_update_post( array( 
+        'ID'         => $post_id, 
+        'post_title' => 'Подарок №' . $post_id,
+        'post_name'  => $post_id,
+    ) );
+    
+    add_action( 'save_post_gift', 'set_title_gifts' );
 }

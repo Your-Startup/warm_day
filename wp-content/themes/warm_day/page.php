@@ -16,16 +16,13 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
 		<?php
-			
 			$template_part = get_template_part( 'template-parts/pages/content', $post->post_name );
 
 			if ($template_part === false) {
 				get_template_part( 'template-parts/pages/content', 'default' );
 			}
 		?>
-
 	</main><!-- #main -->
 
 <?php

@@ -1,7 +1,16 @@
 <?php
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
+require_once( ABSPATH . 'wp-admin/includes/file.php' );
+require_once( ABSPATH . 'wp-admin/includes/media.php' );
+
 global $post;
 global $allCities;
 global $current_city;
+
+if (!empty($post) && $post->post_type == 'gift') {
+    $cityID = get_field('children', $post->ID)['city'];
+    $current_city = get_post($cityID);
+}
 
 $is_non_city = !$current_city && $pagename == 'catalog';
 
@@ -19,19 +28,21 @@ if ($post) : ?>
             <?php if ($allCities) : ?>
                 <div class="popup-content<?= $is_non_city ? ' active"' : ''?>" id="city">
                     <h3>Выбор муниципального образования, где вы находитесь</h3>
-                    <ul class="cities">
-                        <?php foreach ($allCities as $city) : ?>
-                            <li>
-                                <a href="/catalog?cityId=<?= $city['id'] ?>">
-                                    <img src="<?= $city['img'] ?>" alt="">
-                                    <?= $city['name'] ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <div class="popup-scroll">
+                        <ul class="cities">
+                            <?php foreach ($allCities as $city) : ?>
+                                <li>
+                                    <a href="/catalog?cityId=<?= $city['id'] ?>">
+                                        <img src="<?= $city['img'] ?>" alt="">
+                                        <?= $city['name'] ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             <?php endif; ?>
-            <?php if ($pagename == 'catalog') : ?>
+            <?php if (in_array($pagename, ['catalog', 'gift'])) : ?>
                 <div class="popup-content" id="order">
                     <form class="order js-request">
                         <input type="hidden" name="id" value="">
@@ -50,6 +61,18 @@ if ($post) : ?>
                             <label for="">
                                 Организация
                                 <input type="text" name="company" id="order_company">
+                            </label>
+                            <input type="file" name="logo_company" id="order_logo_company" accept=".png, .jpg, .jpeg">
+                            <label for="order_logo_company">
+                                Логотип организации
+                                <div class="file-container">
+                                    <div class="file-icon">
+                                       <img src="<?= get_template_directory_uri() . '/assets/imgs/file.svg' ?>" alt="">
+                                    </div>
+                                    <div class="file-name">
+                                        
+                                    </div>
+                                </div>
                             </label>
                             <label for="">
                                 Номер телефона*

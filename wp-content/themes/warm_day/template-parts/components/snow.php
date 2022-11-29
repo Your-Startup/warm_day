@@ -1,4 +1,4 @@
-<div class="snow-container">
+<div class="snow-container desktop">
     <div class="snow"></div>
     <div class="snow"></div>
     <div class="snow"></div>

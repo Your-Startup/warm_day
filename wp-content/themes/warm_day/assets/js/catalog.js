@@ -69,12 +69,14 @@ function filtersInit() {
             checkbox.checked = false;
         });
         drop.setAttribute('disabled', 'disabled');
+        filters.querySelector('input[name="page"]').value = 1;
         const data = new FormData(filters);
         submit(data);
     });
 
     filters.addEventListener('submit', (e) => {
         e.preventDefault();
+        filters.querySelector('input[name="page"]').value = 1;
         const data = new FormData(filters);
         submit(data);
     });

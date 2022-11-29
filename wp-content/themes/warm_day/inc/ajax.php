@@ -141,13 +141,20 @@ function order()
 		wp_die();
 	}
 
+	$attachment_id = media_handle_upload( 'logo_company', $gift->ID );
+
+	if ( is_wp_error( $attachment_id ) ) {
+		$attachment_id = '';
+	}
+
 	$new_order = [
-		'is_ordered' => true,
-		'name'       => $data['name'],
-		'is_show'    => isset($data['is_show']),
-		'company'    => isset($data['company']) ? $data['company'] : '',
-		'phone'      => $data['phone'],
-		'email'      => $data['email'],
+		'is_ordered'   => true,
+		'name'         => $data['name'],
+		'is_show'      => isset($data['is_show']),
+		'logo_company' => $attachment_id,
+		'company'      => isset($data['company']) ? $data['company'] : '',
+		'phone'        => $data['phone'],
+		'email'        => $data['email'],
 	];
 
 	update_field('order', $new_order, $gift->ID);

@@ -1,0 +1,370 @@
+.mobile-menu-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    min-width: max-content;
+    max-width: max-content;
+    background: #FFF;
+}
+
+.mobile-menu-btn,
+.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 782px) {
+    html #wpadminbar {
+        position: fixed;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .main-navigation {
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.6s;
+        width: 100%;
+        height: calc(100vh - 88px);
+    }
+
+    body.admin-bar  .main-navigation {
+        height: calc(100vh - 135px);
+    }
+
+    .mobile-menu-btn,
+    .mobile {
+        display: block !important;
+    }
+
+    .desktop {
+        display: none !important;
+    }
+
+    header {
+        flex-wrap: wrap;
+        padding: 15px 30px;
+        transition: 0.6s;
+        overflow: hidden;
+    }
+
+    body.admin-bar header {
+        top: 46px;
+    }
+
+    body.admin-bar header.open {
+        height: calc(100vh - 46px);
+    }
+
+    header.open {
+        height: 100vh;
+    }
+
+    header.open .main-navigation{
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .menu {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .menu-item {
+        margin: 0 0 20px;
+    }
+
+    #main {
+        height: calc(100vh - 85px);
+        padding: 10px 25px 20px;
+        margin-bottom: 25px;
+    }
+
+    body.admin-bar #main {
+        height: calc(100vh - 131px);
+    }
+
+    .swiper-prev, .swiper-next {
+        width: 37px;
+        height: 75px;
+        top: 80%;
+    }
+
+    .main-top {
+        justify-content: center;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 25px 12px;
+    }
+
+    .main-content h1 {
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        margin-bottom: 30px;
+    }
+
+    .big-btn {
+        padding: 22px;
+        min-width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .main-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .main-bottom * {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    section {
+        padding: 25px 0;
+    }
+
+    h1, h2 {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 36px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        margin-bottom: 30px;
+    }
+
+    .about-row {
+        flex-direction: column;
+    }
+
+    .about-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-col img {
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+        margin-left: 14px;
+    }
+
+    .about-col p {
+        margin-top: 0;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .about-text {
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .about-text img {
+        max-width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .about-text p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .how-it-works-content {
+        grid-template-columns: 1fr;
+    }
+
+    .how-it-works-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .how-it-works-item {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .contacts-container {
+        flex-direction: column;
+    }
+
+    form.request {
+        padding: 30px 25px;
+        min-width: 100%;
+        border-radius: 30px;
+    }
+
+    h3 {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+
+    form:not(.filters) label {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    form:not(.filters) input[type=text], 
+    form:not(.filters) input[type=tel], 
+    form:not(.filters) input[type=email] {
+        padding: 15px 20px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    form:not(.filters) input[type=checkbox] + label {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    form:not(.filters) input[type=checkbox] + label::before {
+        padding-bottom: 0;
+    }
+
+    form:not(.filters) button {
+        padding: 15px 20px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    button {
+        padding: 16px 10px;
+    }
+
+    form.request button svg {
+        width: 18px;
+    }
+
+    .acceptance-points {
+        margin-bottom: 15px;
+    }
+    
+    .point {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .acceptance-points-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .acceptance-points-footer * {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    form.js-request .form_preloader, 
+    form.js-request .form_answer {
+        padding: 30px;
+    }
+
+    .answer_title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+
+    .answer_text,
+    .socials {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .popup-container {
+        padding: 50px 20px;
+    }
+
+    .popup-close {
+        top: 10px;
+        right: 10px;
+    }
+
+    .popup-scroll {
+        padding-right: 10px;
+        margin-right: -10px;
+    }
+    
+
+    .cities {
+        columns: 1;
+    }
+
+    .cities li a {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        border-radius: 30px;
+        padding: 30px;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .filters-col {
+        max-width: 275px;
+        width: 100%;
+    }
+
+    .gift-list {
+        gap: 30px;
+        margin-bottom: 30px;
+        max-height: none;
+    }
+
+    .gift {
+        width: 100%;
+        background-size: auto 200px;
+        display: block;
+        padding: 200px 20px 30px;
+        border-radius: 30px;
+    }
+
+    .gift-content {
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    .gift-content h1 {
+        font-size: 22px;
+        line-height: 27px;
+    }
+
+    .gift-img {
+        left: 45px;
+        top: 60px;
+    }
+
+    .gift-info,
+    .gift-children {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .gift-info p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .gift-info button {
+        margin: 30px auto 0;
+    }
+}

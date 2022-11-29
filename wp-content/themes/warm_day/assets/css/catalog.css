@@ -109,8 +109,8 @@
 }
 
 .gift-info {
-    max-width: 330px;
-    min-width: 330px;
+    max-width: 370px;
+    min-width: 370px;
 }
 
 .gift-title {
@@ -135,6 +135,25 @@
     line-height: 18px;
     text-transform: uppercase;
     color: #961B1F;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gift-ordered span {
+    min-width: 100%;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #961B1F;
+}
+
+.gift-ordered img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 15px;
 }
 
 .gift-pagination {

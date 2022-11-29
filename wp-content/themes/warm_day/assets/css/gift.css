@@ -1,0 +1,82 @@
+.gift {
+    background-color: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(206, 206, 206, 0.25);
+    border-radius: 50px;
+    padding: 56px 90px ;
+    background-image: url('../imgs/gift-bg-big.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.gift-img {
+    position: absolute;
+    left: 130px;
+    top: 110px;
+    width: auto;
+    height: auto;
+}
+
+.gift-content {
+    display: flex;
+    margin-left: 220px;
+    justify-content: space-between;
+}
+
+.gift-content h1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.gift-content p {
+    margin-top: 0;
+}
+
+.gift-children,
+.gift-info {
+    min-width: calc(50% - 25px);
+    width: calc(50% - 25px);
+}
+
+.gift-children button {
+    margin-top: 50px;
+}
+
+.gift-info {
+    font-size: 24px;
+    line-height: 29px;
+    color: #4A4A4A;
+    word-break: break-word;
+}
+
+.gift-info img {
+    width: 100%;
+    height: auto;
+}
+
+.gift-ordered {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #961B1F;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gift-ordered span {
+    min-width: 100%;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #961B1F;
+}
+
+.gift-ordered img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 15px;
+}

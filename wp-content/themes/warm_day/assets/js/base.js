@@ -114,8 +114,43 @@ function phoneMasksInit() {
     });
 }
 
+function initMobileMenu() {
+    const header   = document.querySelector('header'),
+          menuBtn  = header.querySelector('.mobile-menu-btn'),
+          menuItem = header.querySelectorAll('.menu-item');
+     
+    menuBtn.addEventListener('click', () => {
+        header.classList.toggle('open');
+    });
+
+    menuItem.forEach(item => {
+        item.addEventListener('click', () => {
+            header.classList.remove('open');
+        });
+    });
+}
+
+function fileInputInit() {
+    const inputs = document.querySelectorAll('input[type="file"]');
+
+    inputs.forEach((input) => {
+        input.addEventListener('change', () => {
+            const label = document.querySelector('label[for="' + input.id + '"]');
+            if (input.files.item(0)) {
+                label.querySelector('.file-name').innerHTML = input.files.item(0).name;
+                label.classList.add('file');
+            } else {
+                label.querySelector('.file-name').innerHTML = '';
+                label.classList.remove('file');
+            }
+        });
+    });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     formsInit();
     popupInit();
     phoneMasksInit();
+    initMobileMenu();
+    fileInputInit();
 });

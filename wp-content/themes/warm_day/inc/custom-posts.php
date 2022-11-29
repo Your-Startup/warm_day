@@ -92,7 +92,7 @@ function register_post_types() {
 		'menu_position'       => 28,
 		'menu_icon'           => 'dashicons-star-filled',
 		'hierarchical'        => false,
-		'supports'            => ['title', 'custom-fields' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'supports'            => ['custom-fields' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => ['gift-categories'],
 		'has_archive'         => false,
 		'rewrite'             => true,

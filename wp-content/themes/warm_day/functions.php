@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '1.0.1' );
 }
 
 /**
@@ -102,6 +102,32 @@ function warm_day_setup() {
 }
 add_action( 'after_setup_theme', 'warm_day_setup' );
 
+function my_customize_register( $wp_customize ) {
+    $wp_customize->add_setting('header_logo', array(
+        'default' => '',
+        'sanitize_callback' => 'absint',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'header_logo', array(
+        'section' => 'title_tagline',
+        'label' => 'Второй логотип'
+    )));
+
+    $wp_customize->selective_refresh->add_partial('header_logo', array(
+        'selector' => '.header-logo',
+        'render_callback' => function() {
+            $logo = get_theme_mod('header_logo');
+            $img = wp_get_attachment_image_src($logo, 'full');
+            if ($img) {
+                return '<img src="' . $img[0] . '" alt="">';
+            } else {
+                return '';
+            }
+        }
+    ));
+}
+add_action( 'customize_register', 'my_customize_register' );
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -151,23 +177,29 @@ function warm_day_scripts() {
 	wp_enqueue_script('warm_day-script-base', get_template_directory_uri() . '/assets/js/base.js', array(), _S_VERSION);
 
 	global $post;
-	$pagename = $post->post_name;
+	if ($post) {
+		$pagename = $post->post_name;
 
-	if (is_single() || is_tax()) {
-		$pagename = $post->post_type;
-	}
+		if (is_single() || is_tax()) {
+			$pagename = $post->post_type;
+		}
+		
+		if (file_exists(get_template_directory() . '/assets/css/' . $pagename . '.css')) {
+			wp_enqueue_style( 'warm_day-style-' . $pagename, get_template_directory_uri() . '/assets/css/' . $pagename . '.css', array(), _S_VERSION );
+			wp_style_add_data( 'warm_day-style-' . $pagename, 'rtl', 'replace' );
+		}
 	
-	if (file_exists(get_template_directory() . '/assets/css/' . $pagename . '.css')) {
-		wp_enqueue_style( 'warm_day-style-' . $pagename, get_template_directory_uri() . '/assets/css/' . $pagename . '.css', array(), _S_VERSION );
-		wp_style_add_data( 'warm_day-style-' . $pagename, 'rtl', 'replace' );
+		if (file_exists(get_template_directory() . '/assets/js/' . $pagename . '.js')) {
+			wp_enqueue_script('warm_day-script-' . $pagename, get_template_directory_uri() . '/assets/js/' . $pagename . '.js', array(), _S_VERSION);
+		}
 	}
 
-	if (file_exists(get_template_directory() . '/assets/js/' . $pagename . '.js')) {
-		wp_enqueue_script('warm_day-script-' . $pagename, get_template_directory_uri() . '/assets/js/' . $pagename . '.js', array(), _S_VERSION);
-	}
 
 	wp_enqueue_style( 'warm_day-show-style', get_template_directory_uri() . '/assets/css/components/snow.css', array(), _S_VERSION );
 	wp_style_add_data( 'warm_day-show-style', 'rtl', 'replace' );
+
+	wp_enqueue_style( 'warm_day-adaptive-style', get_template_directory_uri() . '/assets/css/adaptive.css', array(), _S_VERSION );
+	wp_style_add_data( 'warm_day-adaptive-style', 'rtl', 'replace' );
 }
 add_action( 'wp_enqueue_scripts', 'warm_day_scripts' );
 
