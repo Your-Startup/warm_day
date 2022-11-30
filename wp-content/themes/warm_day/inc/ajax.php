@@ -83,6 +83,8 @@ function feedback()
 		}
 	}
 
+	sendMail('feedback', $data);
+
 	$title = 'Спасибо, ' . $data['name'] . '!';
 	$text  = 'Ваша заявка отправленна, мы свяжемся с Вами в ближайшее время.';
 
@@ -130,9 +132,9 @@ function order()
 		wp_die();
 	}
 
-	$order = get_field('order', $gift->ID);
+	$giftData = get_fields($gift->ID);
 
-	if ($order['is_ordered']) {
+	if ($giftData['order']['is_ordered']) {
 		$result = [
 			'success' => false,
 			'message' => getAnswerTemplate('Подарок уже забронирован.'),
@@ -159,6 +161,13 @@ function order()
 
 	update_field('order', $new_order, $gift->ID);
 
+	$giftData['id'] = $gift->ID;
+	$giftData['order'] = $new_order;
+
+	sendMail('order_admin', $giftData);
+	sendMail('order_instructions', $giftData);
+	sendMail('order_gratitude', $giftData);
+
 	$title = 'Спасибо, ' . $new_order['name'] . '!';
 	$text  = 'Вам на почту отправлены писмо с инструкцией и писмо благоданость, a Ваше имя' . ($new_order['is_show'] ? ' ' : ' не ') . 'будет указано на подарке.';
 
@@ -177,4 +186,58 @@ function getAnswerTemplate($title = '', $text = '') {
 	$template = ob_get_clean();
 
 	return $template;
+}
+
+function sendMail($type, $data) {
+	switch ($type) {
+		case 'feedback':
+			$to      = get_option('admin_email');
+			$subject = 'Запрос на обратную связь ' . wp_date('d.m.Y H:i:s');
+			$message = 'Имя: ' . $data['name'] . "\n" . 
+					   'Телефон: ' . $data['phone'] . "\n" . 
+					   'Почта: ' . $data['email'];
+			$headers = [
+				'From: Тёплый день <info@тёплыйдень.рф>',
+			];
+			wp_mail($to, $subject, $message, $headers);
+			break;
+		
+		case 'order_admin':
+			$to      = get_option('admin_email');
+			$subject = 'Забронирован подарок №' . $data['id'];
+			$message = 'Имя: ' . $data['order']['name'] . "\n" . 
+					   'Телефон: ' . $data['order']['phone'] . "\n" . 
+					   'Почта: ' . $data['order']['email'];
+			$headers = [
+				'From: Тёплый день <info@тёплыйдень.рф>',
+			];
+			wp_mail($to, $subject, $message, $headers);
+			break;
+
+		case 'order_instructions':
+			$to      = $data['order']['email'];
+			$subject = 'Инструкция для дарителя';
+			ob_start();
+			include_once(get_template_directory().'/template-parts/mails/instructions.php');
+			$message = ob_get_clean();
+			$headers = [
+				'From: Тёплый день <info@тёплыйдень.рф>',
+				'content-type: text/html'
+			];
+			wp_mail($to, $subject, $message, $headers);
+			break;
+
+		case 'order_gratitude':
+			$to      = $data['order']['email'];
+			$subject = 'Благодарность';
+			ob_start();
+			include_once(get_template_directory().'/template-parts/mails/gratitude.php');
+			$message = ob_get_clean();
+			$headers = [
+				'From: Тёплый день <info@тёплыйдень.рф>',
+				'content-type: text/html'
+			];
+			wp_mail($to, $subject, $message, $headers);
+			break;
+	}
 }

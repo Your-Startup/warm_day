@@ -587,17 +587,20 @@ form.js-request.answer .form_answer {
     padding: 0;
     margin: 0;
     list-style: none;
-    columns: 2;
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cities li {
     margin-bottom: 15px;
+    width: 50%;
 }
 
 .cities li a {
     display: flex;
     align-items: center;
-    width: max-content;
+    width: 100%;
 }
 
 .cities li a img {

@@ -83,11 +83,11 @@ body.admin-bar #main {
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    text-shadow: 0 0 15px #145C8E;
 }
 
 .main-content {
     max-width: 640px;
-    backdrop-filter: blur(10px);
     border-radius: 60px;
     padding: 60px 25px;
 }
@@ -99,7 +99,10 @@ body.admin-bar #main {
     text-align: center;
     letter-spacing: 0.02em;
     color: #FFFFFF;
+    text-shadow: 0 0 30px #145C8E;
     margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
 }
 
 .blue-btn {
@@ -123,6 +126,7 @@ body.admin-bar #main {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    text-shadow: 0 0 15px #145C8E;
 }
 
 .question,

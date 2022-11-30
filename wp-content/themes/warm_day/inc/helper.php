@@ -224,7 +224,9 @@ function fill_gift_column($colname, $post_id ) {
 		}
 	}
 
-	echo $out;
+    if (isset($out)) {
+        echo $out;
+    }
 }
 
 // фильтр - добавим выпадающий список
@@ -233,6 +235,11 @@ add_action( 'restrict_manage_posts', 'add_gift_table_filters');
 add_action( 'pre_get_posts', 'add_gift_table_filters_handler' );
 
 function add_gift_table_filters( $post_type ){
+
+    $cs = function_exists('get_current_screen') ? get_current_screen() : null;
+    if( ! is_admin() || empty($cs->post_type) || $cs->post_type != 'gift' || $cs->id != 'edit-gift' )
+    return;
+
     global $allCities;
     $cities = $allCities;
 
