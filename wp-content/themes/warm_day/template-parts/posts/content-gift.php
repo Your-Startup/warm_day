@@ -8,7 +8,7 @@ $gift = get_fields();?>
             <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
             <div class="gift-content">
                 <div class="gift-children">
-                    <h1><?= $gift['children']['name'] . ' ' . $gift['children']['age'] . ' ' . num2word($gift['children']['age'], ['год', 'года', 'лет']) ?></h1>
+                    <h1><?= $gift['children']['name'] . ' ' . $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?></h1>
                     <p><?= $gift['children']['about'] ?></p>
 
                     <div class="desktop">

@@ -31,7 +31,7 @@ if ($post) : ?>
                     <div class="popup-scroll">
                         <ul class="cities">
                             <?php foreach ($allCities as $city) : ?>
-                                <li>
+                                <li style="order: <?= $city['point']['order'] ?>">
                                     <a href="/catalog?cityId=<?= $city['id'] ?>">
                                         <img src="<?= $city['img'] ?>" alt="">
                                         <?= $city['name'] ?>
@@ -86,9 +86,9 @@ if ($post) : ?>
                                 Забронировать подарок
                             </button>
                             <input type="checkbox" id="order_pp" checked required>
-                            <label for="order_pp">Даю согласие на обработку персональных данных</label>
+                            <label for="order_pp">Даю согласие на&nbsp<a href="/privacy-policy" target="_blank">обработку персональных данных</a></label>
                             <input type="checkbox" id="order_show" name="is_show" checked>
-                            <label for="order_show">Хотите ли вы отображаться на забронированном товаре?</label>
+                            <label for="order_show">Опубликовать моё ФИО на забронированном подарке</label>
                         </div>
                         <div class="form_preloader">
                             <div class="lds-dual-ring"></div>

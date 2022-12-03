@@ -11,7 +11,7 @@
                 <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
                 <div class="gift-info">
                     <a class="gift-title" href="<?= get_permalink($gift['id']) ?>">
-                        <?= $gift['children']['name'] ?>, <?= $gift['children']['age'] . ' ' . num2word($gift['children']['age'], ['год', 'года', 'лет']) ?><br>
+                        <?= $gift['children']['name'] ?>, <?= $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?><br>
                     </a>
                     <div class="gift-text">
                         <?= $gift['text'] ?>

@@ -56,13 +56,12 @@
 </section>
 <section id="about">
     <div class="container">
-        <h2>Информация о проекте</h2>
+        <h2>Информация об акции</h2>
         <?php $about = get_field('about'); ?>
         <?php if ($about) : ?>
             <div class="about-row">
                 <?php foreach ($about as $item) : ?>
                     <div class="about-col">
-                        <img src="<?= $item['icon'] ?>" alt="">
                         <?= $item['text'] ?>
                     </div>
                 <?php endforeach; ?>

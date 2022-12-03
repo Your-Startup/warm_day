@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.1' );
+	define( '_S_VERSION', '1.0.3' );
 }
 
 /**
@@ -249,6 +249,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom-posts.php';
 
 /**
+* Export gifts.
+*/
+require get_template_directory() . '/inc/export_gifts.php';
+
+/**
 * Ajax.
 */
 require get_template_directory() . '/inc/ajax.php';
@@ -331,3 +336,12 @@ add_action( 'admin_head-index.php', function () {
 	</style>
 	<?php
 } );
+
+add_action( 'template_redirect', function() {
+	$is_closed = get_field('is_closed', 'options');
+
+	if( ($is_closed && !is_page('closed') && !is_user_logged_in() ) ) {
+		wp_redirect( site_url( '/closed' ) ); 
+		exit();
+	}
+});

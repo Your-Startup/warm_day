@@ -9,7 +9,7 @@ function filtersInit() {
           free          = filters.querySelector('#free'),
           all           = filters.querySelector('#all'),
           select        = filters.querySelector('.select'),
-          select_header = select.querySelector('.select-header'),
+          select_header = filters.querySelector('.select-header'),
           drop          = filters.querySelector('.js-drop-filters');
 
     material.onchange = () => {
@@ -42,10 +42,12 @@ function filtersInit() {
         }
     }
     
-    select_header.addEventListener('click', () => {
-        select.classList.toggle('active');
-    });
-
+    if (select && select_header) {
+        select_header.addEventListener('click', () => {
+            select.classList.toggle('active');
+        });
+    }
+    
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             let is_disabled = true;

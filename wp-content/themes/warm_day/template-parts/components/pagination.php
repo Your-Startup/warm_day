@@ -27,7 +27,7 @@ $count_show_lr_pages = 2;
             <?php endif; ?>
         <?php endfor; ?>
 
-        <?php if ($pagination['pages'] - $pagination['page'] > $count_show_lr_pages) : ?>
+        <?php if ($pagination['pages'] - $pagination['page'] > $count_show_lr_pages && $pagination['pages'] > $count_show_pages) : ?>
             . . .
             <div class="pagination-page js-pagination" data-page="<?= $pagination['pages'] ?>">
                 <?= $pagination['pages'] ?>

@@ -122,7 +122,7 @@ a[x-apple-data-detectors] {
                         <strong><?php echo str_replace('\"', '"', $data['order']['company']) ?></strong>
                       <?php else : ?>
                         Уважаемый <strong><?= $data['order']['name'] ?></strong>
-                      <?php endif; ?>,<br>благодарим вас за участие в нашей акции<br>и помощь детям!<br>Спасибо, что делаете добрые дела.</p></td>
+                      <?php endif; ?>,<br>благодарим Вас за участие в нашей акции<br>и помощь детям!<br>Спасибо, что делаете добрые дела.</p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -142,7 +142,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p20b" align="center" valign="top" style="padding:0;Margin:0;width:304px">
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">С уважением<br>организаторы акции</p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">С уважением,<br>Организаторы акции</p></td>
                      </tr>
                    </table></td>
                   <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>

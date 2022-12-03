@@ -101,10 +101,15 @@ function getGifts($params = []) {
     }
 
     $giftPosts = get_posts($attr);
-
-    $offset      = $params['gifts_on_page'] * $params['page'] - $params['gifts_on_page']; 
     $count_gifts = count($giftPosts);
-    $last_gift   = $count_gifts < $offset + $params['gifts_on_page'] ? $count_gifts : $offset + $params['gifts_on_page'];
+    
+    $offset = 0;
+    $last_gift = $count_gifts;
+
+    if ($params['gifts_on_page'] != -1) {
+        $offset      = $params['gifts_on_page'] * $params['page'] - $params['gifts_on_page'];  
+        $last_gift   = $count_gifts < $offset + $params['gifts_on_page'] ? $count_gifts : $offset + $params['gifts_on_page'];
+    }
 
     $gifts = [
         'pagination' => [
@@ -112,6 +117,7 @@ function getGifts($params = []) {
             'pages' => ceil($count_gifts / $params['gifts_on_page']),
         ],
         'items' => [],
+        'count_items' => $count_gifts
     ];
 
     if ($giftPosts) {

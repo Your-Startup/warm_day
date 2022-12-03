@@ -16,8 +16,12 @@
                     <input type="tel" name="phone" id="feedback_phone" required pattern="\+7 \d{3} \d{3} \d{2} \d{2}|8 \d{3} \d{3} \d{2} \d{2}">
                 </label>
                 <label for="">
-                    Почта
+                    Электронная почта
                     <input type="email" name="email" id="feedback_email" required>
+                </label>
+                <label for="">
+                    Вопрос
+                    <textarea name="text" id="feedback_text" cols="30" rows="5"></textarea>
                 </label>
                 <button type="submit">
                     Отправить
@@ -26,7 +30,7 @@
                     </svg>
                 </button>
                 <input type="checkbox" id="feedback_pp" checked required>
-                <label for="feedback_pp">Даю согласие на обработку персональных данных</label>
+                <label for="feedback_pp">Даю согласие на&nbsp<a href="/privacy-policy" target="_blank">обработку персональных данных</a></label>
                 <div class="form_preloader">
                     <div class="lds-dual-ring"></div>
                 </div>
@@ -39,14 +43,19 @@
                     <h3>Пункты приема подарков</h3>
                     <?php if ($allCities) : ?>
                         <?php foreach ($allCities as $city) : ?>
-                            <?php if (!empty($city['point'])) : ?>
+                            <?php if (!empty($city['point']['address'])) : ?>
                                 <div class="point">
                                     <div class="point-img">
                                         <img src="<?= $city['img'] ?>" alt="">
                                     </div>
-                                    <div class="point-text">
-                                        <span><?= $city['point']['city'] ?></span> – <?= $city['point']['address'] ?>
-                                    </div>                                 
+                                    <div class="point-title">
+                                        <?= $city['name'] ?>
+                                    </div>
+                                    <?php foreach ($city['point']['address'] as $address) : ?>
+                                        <div class="point-text">
+                                            <span><?= $address['city'] ?></span> – <?= $address['address'] ?>
+                                        </div> 
+                                    <?php endforeach; ?>                                
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>

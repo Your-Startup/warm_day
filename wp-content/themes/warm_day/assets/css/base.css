@@ -47,6 +47,10 @@ a:hover {
     margin: 0 auto;
 }
 
+main.site-main {
+    min-height: calc(100vh - 85px);
+}
+
 section {
     padding: 100px 0;
     z-index: 10;
@@ -256,6 +260,7 @@ header {
 
 .contacts-container {
     display: flex;
+    align-items: flex-start;
     gap: 70px;
 }
 
@@ -290,6 +295,19 @@ form.request input[type=email] {
     background: #FFFFFF;
     border: 0.5px solid #145C8E;
     border-radius: 60px;
+    padding: 24px 36px;
+    margin-top: 12px;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    background: #FFFFFF;
+    border: 0.5px solid #145C8E;
+    border-radius: 30px;
     padding: 24px 36px;
     margin-top: 12px;
     outline: none;
@@ -457,14 +475,25 @@ form.js-request.answer .form_answer {
 .point {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 12px;
 }
 
+.point-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
 .point span {
     font-weight: 600;
+}
+
+.point-text {
+    min-width: 100%;
+    margin: 10px 0px 10px 30px;
 }
 
 .point-img {

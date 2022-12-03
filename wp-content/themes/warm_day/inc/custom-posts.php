@@ -54,6 +54,8 @@ function register_post_types() {
 		'description'         => '',
 		'public'              => true,
 		'show_in_menu'        => true, // показывать ли в меню адмнки
+		'publicly_queryable'  => false,
+		'exclude_from_search' => false,
 		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
 		'show_in_rest'        => null, // добавить в REST API. C WP 4.7
 		'rest_base'           => null, // $post_type. C WP 4.7
@@ -119,6 +121,8 @@ function register_post_types() {
 		'description'         => '',
 		'public'              => true,
 		'show_in_menu'        => true, // показывать ли в меню адмнки
+		'publicly_queryable'  => false,
+		'exclude_from_search' => false,
 		'show_in_rest'        => null, // добавить в REST API. C WP 4.7
 		'rest_base'           => null, // $post_type. C WP 4.7
 		'menu_position'       => 29,

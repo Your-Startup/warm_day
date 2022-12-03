@@ -136,7 +136,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:270px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><strong><?= $data['children']['name'] . ', ' . $data['children']['age'] . ' ' . num2word($data['children']['age'], ['год', 'года', 'лет'])?></strong></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><strong><?= $data['children']['name'] . ', ' . $data['children']['age'] . ' ' . num2word($data['children']['age'], $data['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев'])?></strong></p></td>
                      </tr>
                      <tr>
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><?= $data['children']['about'] ?></p></td>
@@ -186,10 +186,18 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><u>Материальный подарок:</u></p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Самостоятельно купить подарок<br><strong>до 17 октября</strong></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Самостоятельно купить подарок <strong>до 17 декабря</strong></p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">2. <strong>18 октября</strong> привезти подарок в пункт приема<br>по адресу <?= $point['city'] . ' ' . $point['address'] ?></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">2. <strong>18 декабря</strong> привезти подарок в пункт приема 
+                      <?php if ($point['address']) : ?>по адресу:<br> 
+                        <?php foreach ($point['address'] as $address) : ?>
+                            <div class="point-text">
+                                <strong><?= $address['city'] ?></strong> – <?= $address['address'] ?>
+                            </div> 
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      </p></td>
                      </tr>
                      <tr>
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">3. Дождаться вручения подарка ребенку</p></td>
@@ -205,7 +213,7 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><u>Нематериальный подарок:</u></p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Исполнить желание ребенка<br><strong>19-30 октября</strong></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Исполнить желание ребенка<br><strong>19-30 декабря</strong></p></td>
                      </tr>
                    </table></td>
                  </tr>
