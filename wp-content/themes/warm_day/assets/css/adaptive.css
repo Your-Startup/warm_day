@@ -255,6 +255,8 @@
 
     .acceptance-points {
         margin-bottom: 15px;
+        columns: 1;
+        column-gap: 0;
     }
     
     .point {
@@ -381,5 +383,13 @@
 
     .gift-info button {
         margin: 30px auto 0;
+    }
+
+    #feedback {
+        flex-direction: column;
+    }
+
+    .feedback-col {
+        width: 100%;
     }
 }

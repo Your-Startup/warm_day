@@ -259,9 +259,7 @@ header {
 }
 
 .contacts-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 70px;
+    display: block;
 }
 
 form.request {
@@ -441,6 +439,7 @@ form.js-request.answer .form_answer {
     width: 100%;
     height: auto;
     margin-bottom: 50px;
+    max-width: 300px;
 }
 
 .answer_title {
@@ -459,7 +458,7 @@ form.js-request.answer .form_answer {
 }
 
 .answer_footer {
-    min-height: 180px;
+    min-height: 150px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -470,6 +469,12 @@ form.js-request.answer .form_answer {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+}
+
+.acceptance-points {
+    columns: 2;
+    column-gap: 100px;
+    margin-bottom: 50px;
 }
 
 .point {
@@ -738,4 +743,21 @@ body.admin-bar .error-404 {
 
 .error-404 p {
     text-align: center;
+}
+
+#feedback {
+    max-width: 100%;
+    min-width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+#feedback h3 {
+    width: 100%;
+}
+
+.feedback-col {
+    width: calc(50% - 30px);
 }
