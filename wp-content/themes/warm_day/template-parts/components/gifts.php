@@ -8,11 +8,28 @@
     <div class="gift-list">
         <?php foreach ($gifts['items'] as $gift) : ?>
             <div class="gift" >
-                <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
+                <?php if ($gift['is_pensioner']) : ?>
+                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/pensioner.png'?>" alt="">
+                <?php else : ?>
+                    <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
+                <?php endif; ?>
+
+                
                 <div class="gift-info">
-                    <a class="gift-title" href="<?= get_permalink($gift['id']) ?>">
-                        <?= $gift['children']['name'] ?>, <?= $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?><br>
-                    </a>
+                    <?php if ($gift['is_pensioner']) : ?>
+                        <a class="gift-title" href="<?= get_permalink($gift['id']) ?>">
+                            <?= $gift['children']['name'] ?>
+                        </a>
+                        <div class="is_pensioner">
+                            <?= $gift['children']['gender'] == 'man' ? 'Пенсионер' : 'Пенсионерка' ?>
+                        </div>
+                    <?php else : ?>
+                        <a class="gift-title" href="<?= get_permalink($gift['id']) ?>">
+                            <?= $gift['children']['name'] ?>, <?= $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?><br>
+                        </a>
+                    <?php endif; ?>
+
+
                     <div class="gift-text">
                         <?= $gift['text'] ?>
                     </div>

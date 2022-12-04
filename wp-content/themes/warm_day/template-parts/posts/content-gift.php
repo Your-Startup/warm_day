@@ -1,16 +1,37 @@
 <?php 
 global $post;
-$gift = get_fields();?>
-
+$gift = get_fields();
+$categories = get_the_terms($post->ID, 'gift-categories');
+$is_pensioner = false;
+if ($categories) {
+    foreach ($categories as $category) {
+        if ($category->slug == 'pensioners') {
+            $is_pensioner = true;
+            break;
+        }
+    }
+}
+?>
 <section id="gift">
     <div class="container">
         <div class="gift">
-            <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
+            <?php if ($is_pensioner) : ?>
+                <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/pensioner.png'?>" alt="">
+            <?php else : ?>
+                <img class="gift-img" src="<?= get_template_directory_uri() . '/assets/imgs/' . $gift['children']['gender'] . '.png'?>" alt="">
+            <?php endif; ?>
+            
             <div class="gift-content">
                 <div class="gift-children">
-                    <h1><?= $gift['children']['name'] . ' ' . $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?></h1>
-                    <p><?= $gift['children']['about'] ?></p>
-
+                    <?php if ($is_pensioner) : ?>
+                        <h1><?= $gift['children']['name'] ?></h1>
+                        <div class="is_pensioner">
+                            <?= $gift['children']['gender'] == 'man' ? 'Пенсионер' : 'Пенсионерка' ?>
+                        </div>
+                    <?php else : ?>
+                        <h1><?= $gift['children']['name'] . ' ' . $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?></h1>
+                        <p><?= $gift['children']['about'] ?></p>
+                    <?php endif; ?>
                     <div class="desktop">
                         <?php if ($gift['order']['is_ordered']) :?>
                             <div class="gift-ordered">

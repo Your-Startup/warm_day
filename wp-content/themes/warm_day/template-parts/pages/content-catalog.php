@@ -3,10 +3,12 @@ global $current_city;
 
 $gifts = [];
 $categories = [];
+$info = null;
 
 if ($current_city) {
     $gifts      = getGifts(['city' => $current_city->ID]);
     $categories = getAllCategories();
+    $info = get_field('info', $current_city->ID);
 }
 ?>
 
@@ -69,3 +71,13 @@ if ($current_city) {
         </div>
     </div>
 </section>
+
+<?php if ($info) : ?>
+    <section id="info">
+        <div class="container">
+            <div class="info">
+                <?= $info ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>

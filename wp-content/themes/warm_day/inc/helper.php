@@ -122,11 +122,24 @@ function getGifts($params = []) {
 
     if ($giftPosts) {
         for ($i = $offset; $i < $last_gift; $i++) { 
+
+            $categories = get_the_terms($giftPosts[$i]->ID, 'gift-categories');
+            $is_pensioner = false;
+            if ($categories) {
+                foreach ($categories as $category) {
+                    if ($category->slug == 'pensioners') {
+                        $is_pensioner = true;
+                        break;
+                    }
+                }
+            }
+
             $gifts['items'][] = [
                 'id'       => $giftPosts[$i]->ID,
                 'children' => get_field('children', $giftPosts[$i]->ID),
                 'text'     => get_field('text', $giftPosts[$i]->ID),
                 'order'    => get_field('order', $giftPosts[$i]->ID),
+                'is_pensioner' => $is_pensioner,
             ];
         }
     } 
