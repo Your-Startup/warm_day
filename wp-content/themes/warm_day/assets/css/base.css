@@ -761,3 +761,7 @@ body.admin-bar .error-404 {
 .feedback-col {
     width: calc(50% - 30px);
 }
+
+.header-phone {
+    margin: 0 auto;
+}

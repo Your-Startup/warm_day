@@ -1,3 +1,6 @@
+<?php
+$phone = get_field('phone', 'option');
+?>
 <header id="masthead" class="site-header">
     <div class="site-branding">
         <?php the_custom_logo(); ?>
@@ -5,6 +8,12 @@
         <a href="/">
             <?php the_custom_logo_2(); ?>
         </a>
+        <?php if ($phone) : ?>
+            <div class="logo-separator desktop"></div>
+            <a href="tel:<?= $phone ?>" class="desktop">
+                <?= $phone ?>
+            </a>
+        <?php endif; ?>
     </div>
 
     <button class="mobile-menu-btn">
@@ -24,6 +33,11 @@
             )
         );
         ?>
+        <?php if ($phone) : ?>
+            <a href="tel:<?= $phone ?>" class="mobile header-phone">
+                <?= $phone ?>
+            </a>
+        <?php endif; ?>
     </nav>
 
 </header>
