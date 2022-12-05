@@ -2,6 +2,7 @@
 /**
  * @var $title
  * @var $text
+ * @var $is_order
  */
 ?>
 
@@ -14,6 +15,11 @@
     </div>
     <div class="answer_text">
         <?= $text ?>
+        <?php if ($is_order) : ?>
+            <span class="tip">
+                *Некоторые почтовые сервисы отправляют наши письма в спам, обязательно проверьте эту папку. Если остались вопросы, свяжитесь с нами через форму обратной связи.
+            </span>
+        <?php endif; ?>
     </div>
 </div>
 <div class="answer_footer">

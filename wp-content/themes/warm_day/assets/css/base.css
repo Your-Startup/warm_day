@@ -421,6 +421,11 @@ form.js-request .form_answer {
     color: #43719E;
 }
 
+form.js-request .form_answer {
+    max-height: 100vh;
+    overflow: auto;
+}
+
 form.js-request .form_preloader {
     justify-content: center;
 }
@@ -764,4 +769,10 @@ body.admin-bar .error-404 {
 
 .header-phone {
     margin: 0 auto;
+}
+
+.tip {
+    font-size: 12px;
+    display: block;
+    margin-top: 20px;
 }

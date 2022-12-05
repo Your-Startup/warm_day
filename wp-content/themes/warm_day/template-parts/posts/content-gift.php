@@ -32,6 +32,10 @@ if ($categories) {
                         <h1><?= $gift['children']['name'] . ' ' . $gift['children']['age'] . ' ' . num2word($gift['children']['age'], $gift['children']['age_type'] ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев']) ?></h1>
                         <p><?= $gift['children']['about'] ?></p>
                     <?php endif; ?>
+                    <div class="gift-text">
+                        <strong>Желание:</strong>
+                        <p><?= $gift['text'] ?></p>
+                    </div>
                     <div class="desktop">
                         <?php if ($gift['order']['is_ordered']) :?>
                             <div class="gift-ordered">
@@ -58,7 +62,6 @@ if ($categories) {
                     </div>
                 </div>
                 <div class="gift-info">
-                    <p><?= $gift['text'] ?></p>
                     <?php if (!empty($gift['img'])) : ?>
                         <img src="<?= $gift['img'] ?>" alt="">
                     <?php endif; ?>

@@ -5,7 +5,7 @@
         <h2>Контакты и обратная связь</h2>
         <div class="contacts-container">
             <form id="feedback" class="request js-request">
-                <h3>Форма обратной связи</h3>
+                <h3>Для ваших вопросов и предложений</h3>
                 <div class="feedback-col">
                     <input type="hidden" name="action" value="feedback">
                     <label for="">
@@ -43,7 +43,7 @@
 
                 </div>
             </form>
-            <div class="acceptance-points-conteiner">
+            <div id="points" class="acceptance-points-conteiner">
                 <h3>Пункты приема подарков</h3>
                 <div class="acceptance-points">
                     <?php if ($allCities) : ?>
@@ -61,7 +61,7 @@
                                             <span><?= $address['city'] ?></span> – <?= $address['address'] ?><br>
                                         <?php endforeach; ?>   
                                         <?php if (!empty($city['point']['fio'])) : ?>
-                                            <br><span>Ответственный(ая): </span><?= $city['point']['fio'] ?>
+                                            <br><span>Ответственное лицо: </span><?= $city['point']['fio'] ?>
                                             <?php if (!empty($city['point']['phone_number'])) : ?>
                                                 <br><span>тел: </span><?= $city['point']['phone_number'] ?>
                                             <?php endif; ?>
@@ -74,10 +74,23 @@
                 </div>
                 <div class="acceptance-points-footer">
                     <?php $question_link = get_field('question_link', 'options');?>
-                    <?php if ($question_link) : ?>
-                        <a href="<?= $question_link ?>" target="_blank" class="questions">
-                            Есть вопрос или предложение?
-                        </a>
+                    <?php $position = get_field('position', 'options');?>
+                    <?php if ($question_link || $position) : ?>
+                        <div>
+                            <?php if ($question_link) : ?>
+                                <a href="<?= $question_link ?>" target="_blank" class="questions">
+                                    Есть вопрос или предложение?
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($question_link && $position) : ?>
+                                <span>&nbsp&nbsp|&nbsp&nbsp</span>
+                            <?php endif; ?>
+                            <?php if ($position) : ?>
+                                <a href="<?= $position ?>" download class="questions">
+                                    Положение
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     <?php else: ?> 
                         <div></div>
                     <?php endif; ?>  

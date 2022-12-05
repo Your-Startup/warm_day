@@ -169,18 +169,18 @@ function order()
 	sendMail('order_gratitude', $giftData);
 
 	$title = 'Спасибо, ' . $new_order['name'] . '!';
-	$text  = 'Вам на почту отправлены писмо с инструкцией и писмо благоданость, a Ваше имя' . ($new_order['is_show'] ? ' ' : ' не ') . 'будет указано на подарке.';
+	$text  = 'Вам на почту отправлены письмо с инструкцией и письмо-благоданость, a Ваше имя' . ($new_order['is_show'] ? ' ' : ' не ') . 'будет указано на подарке.';
 
 	$result = [
 		'success' => true,
-		'message' => getAnswerTemplate($title, $text),
+		'message' => getAnswerTemplate($title, $text, true),
 	];
 
     echo json_encode($result);
     wp_die();
 }
 
-function getAnswerTemplate($title = '', $text = '') {
+function getAnswerTemplate($title = '', $text = '', $is_order = false) {
 	ob_start();
 	include_once(get_template_directory().'/template-parts/components/answer.php');
 	$template = ob_get_clean();

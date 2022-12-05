@@ -200,7 +200,7 @@ a[x-apple-data-detectors] {
                       </p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">3. Дождаться вручения подарка получению</p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">3. Передать подарок помощникам Ямал Ири, они обязательно доставят подарок адресату.</p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -213,7 +213,10 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><u>Нематериальный подарок:</u></p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Исполнить желание получателя<br><strong>19-30 декабря</strong></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1.	Скоро с Вами свяжутся волонтёры для уточнения деталей исполнения новогоднего желания.</p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">2.	Вам необходимо исполнить желание получателя до Нового года.</p></td>
                      </tr>
                    </table></td>
                  </tr>

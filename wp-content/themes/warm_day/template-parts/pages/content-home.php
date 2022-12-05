@@ -82,7 +82,7 @@
 <?php if ($how) : ?>
     <section id="how-it-works">
         <div class="container">
-            <h2>Как это работает?</h2>
+            <h2>Как стать благодарителем?</h2>
             <div class="how-it-works-content">
                 <?php foreach ($how as $key => $item) : ?>
                     <div class="how-it-works-item">
@@ -97,7 +97,7 @@
                 <?php endforeach; ?>
             </div>
             <button class="big-btn blue-btn js-popup-open" data-popup="city">
-                Стать дарителем
+                Подарить подарок
             </button>
         </div>
     </section>
