@@ -169,7 +169,7 @@ function order()
 	sendMail('order_gratitude', $giftData);
 
 	$title = 'Спасибо, ' . $new_order['name'] . '!';
-	$text  = 'Вам на почту отправлены письмо с инструкцией и письмо-благоданость, a Ваше имя' . ($new_order['is_show'] ? ' ' : ' не ') . 'будет указано на подарке.';
+	$text  = 'Вам на почту отправлены письмо с инструкцией и письмо-благодарность, a Ваше имя' . ($new_order['is_show'] ? ' ' : ' не ') . 'будет указано на подарке.';
 
 	$result = [
 		'success' => true,
@@ -189,6 +189,7 @@ function getAnswerTemplate($title = '', $text = '', $is_order = false) {
 }
 
 function sendMail($type, $data) {
+	$result = false;
 	switch ($type) {
 		case 'feedback':
 			$to      = get_option('admin_email');
@@ -199,7 +200,7 @@ function sendMail($type, $data) {
 			$headers = [
 				'From: Тёплый день <info@тёплыйдень.рф>',
 			];
-			wp_mail($to, $subject, $message, $headers);
+			$result = wp_mail($to, $subject, $message, $headers);
 			break;
 		
 		case 'order_admin':
@@ -211,7 +212,7 @@ function sendMail($type, $data) {
 			$headers = [
 				'From: Тёплый день <info@тёплыйдень.рф>',
 			];
-			wp_mail($to, $subject, $message, $headers);
+			$result = wp_mail($to, $subject, $message, $headers);
 			break;
 
 		case 'order_instructions':
@@ -224,7 +225,7 @@ function sendMail($type, $data) {
 				'From: Тёплый день <info@тёплыйдень.рф>',
 				'content-type: text/html'
 			];
-			wp_mail($to, $subject, $message, $headers);
+			$result = wp_mail($to, $subject, $message, $headers);
 			break;
 
 		case 'order_gratitude':
@@ -237,7 +238,9 @@ function sendMail($type, $data) {
 				'From: Тёплый день <info@тёплыйдень.рф>',
 				'content-type: text/html'
 			];
-			wp_mail($to, $subject, $message, $headers);
+			$result = wp_mail($to, $subject, $message, $headers);
 			break;
 	}
+
+	return $result;
 }

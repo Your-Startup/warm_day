@@ -7,7 +7,8 @@ function formsInit() {
     }
 
     forms.forEach((form, key) => {
-        const answer = form.querySelector('.form_answer');
+        const answer = form.querySelector('.form_answer'),
+              action = form.querySelector('input[name="action"]').value;
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -33,6 +34,15 @@ function formsInit() {
                         form.classList.add('answer');
                         form.classList.remove('preload');
                         answer.innerHTML = text;
+
+                        switch (action) {
+                            case 'feedback':
+                                ym(91564746,'reachGoal','feedback');
+                                break;
+                            case 'order':
+                                ym(91564746,'reachGoal','order');
+                                break;
+                        }
                     }
                 
                     xhr.onerror = function() {

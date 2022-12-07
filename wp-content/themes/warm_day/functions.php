@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1.2' );
+	define( '_S_VERSION', '1.1.3' );
 }
 
 /**
@@ -252,6 +252,11 @@ require get_template_directory() . '/inc/custom-posts.php';
 * Export gifts.
 */
 require get_template_directory() . '/inc/export_gifts.php';
+
+/**
+* Mailing.
+*/
+require get_template_directory() . '/inc/mailing.php';
 
 /**
 * Ajax.

@@ -186,7 +186,7 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px"><u>Материальный подарок:</u></p></td>
                      </tr>
                      <tr>
-                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Самостоятельно купить подарок <strong>до 17 декабря</strong></p></td>
+                      <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">1. Самостоятельно купить подарок и упаковать его <strong>до 17 декабря</strong></p></td>
                      </tr>
                      <tr>
                       <td align="left" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#4a4a4a;font-size:14px">2. <strong>18 декабря</strong> привезти подарок в пункт приема 
