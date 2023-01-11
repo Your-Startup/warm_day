@@ -49,6 +49,9 @@ function exportGifts() {
         ],
     ];
 
+    $is_exel = $_POST['format'] == 'exel';
+    $format = $is_exel ? '(для Exel)' : '(для Google таблиц)';
+
     $city = isset($_POST['city']) ? $_POST['city'] : false;
     $cityName = '';
     if ($city) {
@@ -60,7 +63,7 @@ function exportGifts() {
         ];
     }
 
-    $fileName = "Выгрузка забронированных подарков от " . wp_date('d.m.Y H:i:s') . $cityName  . ".csv";
+    $fileName = "Выгрузка забронированных подарков от " . wp_date('d.m.Y H:i:s') . $cityName  . ' ' . $format . ".csv";
     $file     = get_template_directory() . "/temp/" . $fileName; 
 
     $giftPosts = get_posts( [     
@@ -102,10 +105,15 @@ function exportGifts() {
     $data = '';
 
     foreach($records as $row) {
-        $data .= implode("; ", $row) . "\n";
+        $str = strip_tags(implode("; ", $row));
+        $str = str_replace(array("\r\n", "\r", "\n"), ' ', $str);
+        $data .= $str . "\n";
     }
 
-    $data = mb_convert_encoding($data, "windows-1251", "utf-8");
+    if ($is_exel) {
+        $data = mb_convert_encoding($data, "windows-1251", "utf-8");
+    }
+    
     file_put_contents($file, $data);
 
     $result = [

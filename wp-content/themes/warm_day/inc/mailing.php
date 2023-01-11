@@ -65,6 +65,21 @@ function mailing() {
     $giftData = get_fields($giftPost->ID);
     $giftData['id'] = $giftPost->ID;
 
+    switch ($_POST['type']) {
+        case 'ordered':
+            sendOrdered($giftData, $count);
+            break;
+        
+        case 'reminder':
+            sendReminder($giftData, $count);
+            break;
+    }
+
+    exit;
+}
+
+
+function sendOrdered($giftData, $count) {
 	$is_send_1 = sendMail('order_instructions', $giftData);
 	$is_send_2 = sendMail('order_gratitude', $giftData);
 
@@ -72,6 +87,14 @@ function mailing() {
         'max'    => $count,
         'email'  => $giftData['order']['email'] . ($is_send_1 ? ' ОК ' : ' ERROR ') . ($is_send_2 ? ' ОК ' : ' ERROR '),
     ]);
-    exit;
+}
+
+function sendReminder($giftData, $count) {
+    $is_send = sendMail('reminder', $giftData);
+
+    echo json_encode([
+        'max'    => $count,
+        'email'  => $giftData['order']['email'] . ($is_send ? ' ОК ' : ' ERROR ')
+    ]);
 }
 

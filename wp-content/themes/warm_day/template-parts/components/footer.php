@@ -1,4 +1,7 @@
-<?php global $allCities; ?>
+<?php 
+global $allCities; 
+global $post;
+?>
 
 <section id="contacts">
     <div class="container">
@@ -44,34 +47,36 @@
                 </div>
             </form>
             <div id="points" class="acceptance-points-conteiner">
-                <h3>Пункты приема подарков</h3>
-                <div class="acceptance-points">
-                    <?php if ($allCities) : ?>
-                        <?php foreach ($allCities as $city) : ?>
-                            <?php if (!empty($city['point']['address'])) : ?>
-                                <div class="point">
-                                    <div class="point-img">
-                                        <img src="<?= $city['img'] ?>" alt="">
-                                    </div>
-                                    <div class="point-title">
-                                        <?= $city['name'] ?>
-                                    </div>
-                                    <div class="point-text">
-                                        <?php foreach ($city['point']['address'] as $address) : ?>
-                                            <span><?= $address['city'] ?></span> – <?= $address['address'] ?><br>
-                                        <?php endforeach; ?>   
-                                        <?php if (!empty($city['point']['fio'])) : ?>
-                                            <br><span>Ответственное лицо: </span><?= $city['point']['fio'] ?>
-                                            <?php if (!empty($city['point']['phone_number'])) : ?>
-                                                <br><span>тел: </span><?= $city['point']['phone_number'] ?>
+                <?php if ($post->post_name != 'closed') : ?>
+                    <h3>Пункты приема подарков</h3>
+                    <div class="acceptance-points">
+                        <?php if ($allCities) : ?>
+                            <?php foreach ($allCities as $city) : ?>
+                                <?php if (!empty($city['point']['address'])) : ?>
+                                    <div class="point">
+                                        <div class="point-img">
+                                            <img src="<?= $city['img'] ?>" alt="">
+                                        </div>
+                                        <div class="point-title">
+                                            <?= $city['name'] ?>
+                                        </div>
+                                        <div class="point-text">
+                                            <?php foreach ($city['point']['address'] as $address) : ?>
+                                                <span><?= $address['city'] ?></span> – <?= $address['address'] ?><br>
+                                            <?php endforeach; ?>   
+                                            <?php if (!empty($city['point']['fio'])) : ?>
+                                                <br><span>Ответственное лицо: </span><?= $city['point']['fio'] ?>
+                                                <?php if (!empty($city['point']['phone_number'])) : ?>
+                                                    <br><span>тел: </span><?= $city['point']['phone_number'] ?>
+                                                <?php endif; ?>
                                             <?php endif; ?>
-                                        <?php endif; ?>
-                                    </div>                             
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
+                                        </div>                             
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                 <div class="acceptance-points-footer">
                     <?php $question_link = get_field('question_link', 'options');?>
                     <?php $position = get_field('position', 'options');?>

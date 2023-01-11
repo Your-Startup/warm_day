@@ -16,6 +16,10 @@
     #mailing {
         margin-right: 20px;
     }
+
+    #type {
+        margin-bottom: 20px;
+    }
     
     progress {
         margin-right: 20px;
@@ -38,6 +42,11 @@
     <h2><?=  get_admin_page_title() ?></h2>
     <p>На данной странице вы можете вручную запустить рассылку по <strong>забронированным</strong> подаркам. Сейчас доступных к рассылке подарков: <strong><?= !empty($count) ? $count : 0 ?></strong>.</p>
     
+    <select name="type" id="type">
+        <option value="ordered">Письма после бронирования</option>
+        <option value="reminder">Напоминание</option>
+    </select>
+
     <div class="flex">
         <button id="mailing" class="button action">Запустить рассылку</button>
         <progress max="100" value="0"></progress>
@@ -53,17 +62,21 @@
 </div>
 <script>
     const btn          = document.getElementById('mailing'),
+          type         = document.getElementById('type'),
           progress     = document.querySelector('progress'),
           progressText = document.querySelector('.progress-text'),
           log          = document.querySelector('.log');
 
     let count = 1,
         offset = 0,
-        id;
+        id,
+        duration;
 
     btn.addEventListener('click', () => {
         count = 1;
         offset = 0;
+        duration = type.value == "ordered" ? 6000 : 3000;
+
         log.innerHTML = '';
         btn.setAttribute('disabled', 'disabled');
         btn.innerHTML = "Идет рассылка...";
@@ -74,7 +87,7 @@
         id = setInterval(() => {
             sendMail(offset);
             offset++;
-        }, 6000);
+        }, duration);
     });
 
     function sendMail(offset) {
@@ -89,6 +102,7 @@
 
         const data = new FormData();
         data.append('action', 'mailing');
+        data.append('type', type.value);
         data.append('offset', offset);
 
         let xhr = new XMLHttpRequest();
@@ -117,7 +131,7 @@
                     progressText.innerHTML = offset + ' из ' + count;
                     const logRow = document.createElement('div');
                     logRow.innerHTML = response.email;
-                    log.append(logRow);
+                    log.prepend(logRow);
                 }
             }
         }

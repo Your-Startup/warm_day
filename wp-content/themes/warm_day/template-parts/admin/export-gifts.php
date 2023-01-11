@@ -56,6 +56,11 @@ $files = array_keys($files);
             <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
         <?php endforeach; ?>
     </select>
+
+    <select name="format" id="format">
+        <option value="exel">Exel</option>
+        <option value="google">Google таблицы</option>
+    </select>
     
     <button id="export-gift" class="button action">Выгрузить новую</button>
 
@@ -80,8 +85,9 @@ $files = array_keys($files);
 <iframe id="iframe" style="display:none;"></iframe>
 
 <script>
-    const btn  = document.getElementById('export-gift');
-    const city = document.getElementById('city'); 
+    const btn    = document.getElementById('export-gift'),
+          city   = document.getElementById('city'),
+          format = document.getElementById('format');
 
     let is_sending = false;
 
@@ -93,6 +99,7 @@ $files = array_keys($files);
             const data = new FormData();
             data.append('action', 'export_gifts');
             data.append('city', city.value);
+            data.append('format', format.value);
 
             let xhr = new XMLHttpRequest();
             xhr.open('POST', '<?= admin_url('admin-ajax.php') ?>');

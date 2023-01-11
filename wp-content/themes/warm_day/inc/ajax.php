@@ -240,6 +240,19 @@ function sendMail($type, $data) {
 			];
 			$result = wp_mail($to, $subject, $message, $headers);
 			break;
+
+		case 'reminder':
+			$to      = $data['order']['email'];
+			$subject = 'Напоминание';
+			ob_start();
+			include_once(get_template_directory().'/template-parts/mails/reminder.php');
+			$message = ob_get_clean();
+			$headers = [
+				'From: Тёплый день <info@тёплыйдень.рф>',
+				'content-type: text/html'
+			];
+			$result = wp_mail($to, $subject, $message, $headers);
+			break;
 	}
 
 	return $result;
